@@ -27,10 +27,44 @@ class PonderViewController: ViewController {
         
     }
     
+// ---------------------
+// DRAG, RESET, SELECITON GESTURE
+// ---------------------
     
     func wasDragged(gesture: UIPanGestureRecognizer) {
         
-        print("was dragged")
+        let translation = gesture.translationInView(self.view)
+        let label = gesture.view!
+        
+        // animation
+        let xFromCenter = label.center.x - self.view.bounds.width / 2
+        let scale = min(100 / abs(xFromCenter), 1)
+        var rotation = CGAffineTransformMakeRotation(xFromCenter / 200)
+        var stretch = CGAffineTransformScale(rotation, scale, scale)
+        
+        label.transform = stretch
+        
+        // DRAG
+        label.center = CGPoint(x: self.view.bounds.width / 2 + translation.x, y: self.view.bounds.height / 2 + translation.y )
+        
+        if gesture.state == UIGestureRecognizerState.Ended {
+            
+            //SELECTION
+            if label.center.x < 100 {
+                print("Ugly")
+            } else if label.center.x > self.view.bounds.width - 100 {
+                print("Hot!")
+            }
+            
+            
+            // RESET
+            label.center = CGPoint(x: self.view.bounds.width / 2 , y: self.view.bounds.height / 2 )
+            rotation = CGAffineTransformMakeRotation(0)
+            stretch = CGAffineTransformScale(rotation, 1, 1)
+            label.transform = stretch
+
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -202,7 +202,11 @@ class ViewController: UIViewController {
 //        self.signupButton.layer.cornerRadius = 5
 //        self.loginButton.layer.cornerRadius = 5
 //        self.fbLoginButton.layer.cornerRadius = 5
-        
+
+        let push = PFPush()
+        push.setChannel("Giants")
+        push.setMessage("The Giants just scored!")
+        push.sendPushInBackground()
         
     }
     
