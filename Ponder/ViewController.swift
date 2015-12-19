@@ -91,7 +91,7 @@ class ViewController: UIViewController {
                     if error == nil {
                         
                         // Signup Successful
-                        self.performSegueWithIdentifier("login", sender: self)
+                        self.performSegueWithIdentifier("signup", sender: self)
                         
                     } else {
                         
@@ -153,7 +153,7 @@ class ViewController: UIViewController {
                         
                         dispatch_async(dispatch_get_main_queue()) {
                             
-                            self.performSegueWithIdentifier("login", sender: self)
+                            self.performSegueWithIdentifier("signup", sender: self)
                             
                         }
                     } else {
