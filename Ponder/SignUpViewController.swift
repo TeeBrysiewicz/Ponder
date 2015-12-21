@@ -17,9 +17,19 @@ class SignUpViewController: ViewController {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var interestedInWomen: UISwitch!
     
+// ----------------
+// SAVE GENDER PREFERENCE TO PARSE 
+// ----------------
     @IBAction func signUp(sender: AnyObject) {
         
+        PFUser.currentUser()?["interestedInWomen"] = interestedInWomen.on
+        PFUser.currentUser()?.saveInBackground()
         
+        dispatch_async(dispatch_get_main_queue()) {
+            
+            self.performSegueWithIdentifier("ponder", sender: self)
+            
+        }
     }
 
 
@@ -40,11 +50,13 @@ class SignUpViewController: ViewController {
                 
                 print(result)
                 
+                // SAVE FB PARAMETERS TO PARSE
                 PFUser.currentUser()?["gender"] = result["gender"]
                 PFUser.currentUser()?["name"] = result["name"]
                 
                 PFUser.currentUser()?.saveInBackground()
                 
+                // GET AND SAVE FB PROFILE PICTURE TO PARSE
                 let userId = result["id"] as! String
                 let facebookProfilePictureUrl = "https://graph.facebook.com/" + userId + "/picture?type=large"
                 
@@ -53,7 +65,10 @@ class SignUpViewController: ViewController {
                     if let data = NSData(contentsOfURL: fbpicUrl) {
                         
                         self.userImage.image = UIImage(data: data)
-                    
+                        
+                        let imageFile: PFFile = PFFile(data: data)!
+                        PFUser.currentUser()?["image"] = imageFile
+                        PFUser.currentUser()?.saveInBackground()
                     }
                 }
             }
