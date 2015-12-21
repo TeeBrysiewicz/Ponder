@@ -165,13 +165,16 @@ class ViewController: UIViewController {
                             self.performSegueWithIdentifier("login", sender: self)
                             
                         }
-                        
                     }
                 }
             }
         })
     }
     
+    
+// ------------------
+// ALTERNATE LOGIN AND SIGN UP
+// ------------------
     
     @IBAction func login(sender: AnyObject) {
         
@@ -219,9 +222,6 @@ class ViewController: UIViewController {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
-
-    
 
     
 }

@@ -16,6 +16,7 @@
 		D7D2ABAB1C237EBE00B70087 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7D2ABA91C237EBE00B70087 /* LaunchScreen.storyboard */; };
 		D7D2ABB61C237EBE00B70087 /* PonderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2ABB51C237EBE00B70087 /* PonderTests.swift */; };
 		D7D2ABC11C237EBE00B70087 /* PonderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2ABC01C237EBE00B70087 /* PonderUITests.swift */; };
+		D7D386C71C287DFE0008A4F6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D386C61C287DFE0008A4F6 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		D7D2ABBC1C237EBE00B70087 /* PonderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PonderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7D2ABC01C237EBE00B70087 /* PonderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PonderUITests.swift; sourceTree = "<group>"; };
 		D7D2ABC21C237EBE00B70087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7D386C61C287DFE0008A4F6 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				D7D2ABA21C237EBE00B70087 /* ViewController.swift */,
 				D7D2ABA41C237EBE00B70087 /* Main.storyboard */,
 				D73441C01C24B943003D3F2C /* PonderViewController.swift */,
+				D7D386C61C287DFE0008A4F6 /* SignUpViewController.swift */,
 				D7D2ABA71C237EBE00B70087 /* Assets.xcassets */,
 				D7D2ABA91C237EBE00B70087 /* LaunchScreen.storyboard */,
 				D7D2ABAC1C237EBE00B70087 /* Info.plist */,
@@ -339,6 +342,7 @@
 			files = (
 				D7D2ABA31C237EBE00B70087 /* ViewController.swift in Sources */,
 				D7D2ABA11C237EBE00B70087 /* AppDelegate.swift in Sources */,
+				D7D386C71C287DFE0008A4F6 /* SignUpViewController.swift in Sources */,
 				D73441C11C24B943003D3F2C /* PonderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
