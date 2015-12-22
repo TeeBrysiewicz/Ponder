@@ -18,7 +18,7 @@ class SignUpViewController: ViewController {
     @IBOutlet weak var interestedInWomen: UISwitch!
     
 // ----------------
-// SAVE GENDER PREFERENCE TO PARSE 
+// SAVE GENDER PREFERENCE TO PARSE
 // ----------------
     @IBAction func signUp(sender: AnyObject) {
         
@@ -35,6 +35,40 @@ class SignUpViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+// ----------------
+// TEST DATA
+// ----------------
+        
+//        let urlArray = ["http://data.whicdn.com/images/77881747/large.jpg", "http://cdn.unilad.co.uk/wp-content/uploads/2015/09/Instagram_model1.png", "http://www.chareemag.com/wp-content/uploads/2015/03/fit-girls-on-instagram.jpg", "http://slim.top.me/wp-content/uploads/2014/09/Michelle-Lewin.png", "http://cdn2-www.craveonline.com/assets/uploads/gallery/hottest-girls-of-instagram-emily-ratajkowski/screenshot-2014-11-03-at-15-01-47.png"]
+//        
+//        var counter = 1
+//        
+//        for url in urlArray {
+//            
+//            let nsUrl = NSURL(string: url)!
+//            
+//            if let data = NSData(contentsOfURL: nsUrl) {
+//                
+//                self.userImage.image = UIImage(data: data)
+//                
+//                let imageFile: PFFile = PFFile(data: data)!
+//                
+//                let user:PFUser = PFUser()
+//                var username = "user\(counter)"
+//                
+//                user.username = username
+//                user.password = "password"
+//                user["image"] = imageFile
+//                user["interestedInWomen"] = false
+//                user["gender"] = "female"
+//                
+//                counter++
+//                user.signUpInBackground()
+//                
+//            }
+//        }
+        
         
 // ----------------
 // GRAPH REQUEST DATA

@@ -7,36 +7,26 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
+import ParseFacebookUtilsV4
 
 class PonderViewController: ViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        let label = UILabel(frame: CGRectMake(self.view.bounds.width / 2 - 100, self.view.bounds.height / 2 - 50, 200, 100))
-        label.text = "Drag Me"
-        label.textAlignment = NSTextAlignment.Center
-        self.view.addSubview(label)
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var infoLabel: UILabel!
     
-        let gesture = UIPanGestureRecognizer(target: self, action: Selector("wasDragged:"))
-        label.addGestureRecognizer(gesture)
-        
-        label.userInteractionEnabled = true
-        
-    }
+    var displayUserId = ""
     
 // ---------------------
 // DRAG, RESET, SELECITON GESTURE
 // ---------------------
-    
     func wasDragged(gesture: UIPanGestureRecognizer) {
         
         let translation = gesture.translationInView(self.view)
         let label = gesture.view!
         
-        // animation
+        // ANIMATION
         let xFromCenter = label.center.x - self.view.bounds.width / 2
         let scale = min(100 / abs(xFromCenter), 1)
         var rotation = CGAffineTransformMakeRotation(xFromCenter / 200)
@@ -49,11 +39,26 @@ class PonderViewController: ViewController {
         
         if gesture.state == UIGestureRecognizerState.Ended {
             
+            var acceptedOrRejected = ""
+            
             //SELECTION
             if label.center.x < 100 {
+                
                 print("Ugly")
+                acceptedOrRejected = "rejected"
+                
             } else if label.center.x > self.view.bounds.width - 100 {
+                
                 print("Hot!")
+                acceptedOrRejected = "accepted"
+                
+            }
+            
+            if acceptedOrRejected != "" {
+                
+                PFUser.currentUser()?.addUniqueObjectsFromArray([displayUserId], forKey: acceptedOrRejected)
+                PFUser.currentUser()?.saveInBackground()
+                
             }
             
             
@@ -62,25 +67,101 @@ class PonderViewController: ViewController {
             rotation = CGAffineTransformMakeRotation(0)
             stretch = CGAffineTransformScale(rotation, 1, 1)
             label.transform = stretch
-
+            updateImage()
+            
         }
-        
     }
 
+// ---------------------
+// UPDATE IMAGE
+// ---------------------
+    func updateImage() {
+        
+        // -----------------------
+        // ASSIGN CURRENT USER PREFERENCES
+        // -----------------------
+        var interestedIn = "male"
+        if (PFUser.currentUser()!["interestedInWomen"])! as! Bool == true {
+            interestedIn = "female"
+        }
+        
+        
+        var isFemale = true
+        if (PFUser.currentUser()!["gender"])! as! String == "male" {
+            isFemale = false
+        }
+        
+        // ------------------
+        // MATCH QUERY
+        // ---------------------------------------------------
+        var query = PFUser.query()
+        query?.whereKey("gender", equalTo: interestedIn)
+        query?.whereKey("interestedInWomen", equalTo: isFemale)
+        
+        // CHECK IF ALREADY BEEN ACCEPTED OR REJECTED
+        var ignoredUsers = [""]
+        
+        if let acceptedUsers = PFUser.currentUser()?["accepted"] {
+            ignoredUsers += acceptedUsers as! Array
+        }
+        if let rejectedUsers = PFUser.currentUser()?["rejected"] {
+            ignoredUsers += rejectedUsers as! Array
+        }
+        
+        query?.whereKey("objectId", notContainedIn: ignoredUsers)
+        // ------------------------------------------------------
+        
+        query?.limit = 1
+        
+        query?.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error != nil {
+                print(error)
+            } else if let objects = objects {
+                
+                for object in objects {
+                    
+                    self.displayUserId = object.objectId!
+                    
+                    let imageFile = object["image"] as! PFFile
+                    
+                    imageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                        
+                        if error != nil {
+                            print(error)
+                        } else {
+                            if let data = imageData {
+                                self.userImage.image = UIImage(data: data)
+                            }
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let gesture = UIPanGestureRecognizer(target: self, action: Selector("wasDragged:"))
+        userImage.addGestureRecognizer(gesture)
+        userImage.userInteractionEnabled = true
+        
+        updateImage()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "logout" {
+            
+            PFUser.logOut()
+            
+        }
     }
-    */
+
 
 }

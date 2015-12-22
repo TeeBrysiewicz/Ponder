@@ -114,9 +114,57 @@
                     <view key="view" contentMode="scaleToFill" id="r4I-H0-Um1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FEg-ED-pZb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="uMx-72-lq2"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Ponder" id="bqX-Ct-5hx">
+                                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="iUw-y4-Q9q">
+                                            <connections>
+                                                <segue destination="BYZ-38-t0r" kind="show" identifier="logout" id="aLx-Cy-IFn"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Do-Pm-529">
+                                <rect key="frame" x="20" y="90" width="280" height="328"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="328" id="5Fx-jj-93R"/>
+                                    <constraint firstAttribute="width" constant="280" id="r28-Q6-1cc"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ponder Away!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLe-xy-mVI">
+                                <rect key="frame" x="108" y="446" width="105" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="105" id="cCP-EO-Gqx"/>
+                                    <constraint firstAttribute="height" constant="21" id="nyC-0w-ary"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FEg-ED-pZb" firstAttribute="centerX" secondItem="r4I-H0-Um1" secondAttribute="centerX" id="7qz-9p-aQ5"/>
+                            <constraint firstItem="FEg-ED-pZb" firstAttribute="top" secondItem="r4I-H0-Um1" secondAttribute="topMargin" id="QS3-rU-1Y1"/>
+                            <constraint firstItem="7Do-Pm-529" firstAttribute="centerX" secondItem="r4I-H0-Um1" secondAttribute="centerX" id="UYK-sJ-Qfo"/>
+                            <constraint firstItem="7Do-Pm-529" firstAttribute="top" secondItem="FEg-ED-pZb" secondAttribute="bottom" constant="46" id="fku-ox-9xJ"/>
+                            <constraint firstItem="yLe-xy-mVI" firstAttribute="centerX" secondItem="r4I-H0-Um1" secondAttribute="centerX" id="h65-XD-61T"/>
+                            <constraint firstItem="FEg-ED-pZb" firstAttribute="leading" secondItem="r4I-H0-Um1" secondAttribute="leadingMargin" constant="-20" id="jVB-1F-WWS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FEg-ED-pZb" secondAttribute="trailing" constant="-20" id="l9f-m1-OtS"/>
+                            <constraint firstItem="yLe-xy-mVI" firstAttribute="top" secondItem="7Do-Pm-529" secondAttribute="bottom" constant="28" id="zo3-bD-dJV"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="infoLabel" destination="yLe-xy-mVI" id="sn3-fx-XEo"/>
+                        <outlet property="userImage" destination="7Do-Pm-529" id="GGl-wS-Quk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7aX-cK-hFl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -219,6 +267,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Pau-7U-vZN"/>
+        <segue reference="shQ-OK-722"/>
     </inferredMetricsTieBreakers>
 </document>
