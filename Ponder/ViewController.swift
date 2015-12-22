@@ -137,7 +137,7 @@ class ViewController: UIViewController {
     @available(iOS 8.0, *)
     @IBAction func loginWithFacebook(sender: AnyObject) {
         
-        PFFacebookUtils.logInInBackgroundWithReadPermissions(["public_profile"], block: { (user: PFUser?, error: NSError?) -> Void in
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(["public_profile", "email"], block: { (user: PFUser?, error: NSError?) -> Void in
             
             if(error != nil) {
                 self.displayAlert("Error", message: (error?.localizedDescription)!)

@@ -73,7 +73,7 @@ class SignUpViewController: ViewController {
 // ----------------
 // GRAPH REQUEST DATA
 // ----------------
-        let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, gender"])
+        let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, gender, email"])
         graphRequest.startWithCompletionHandler( { (connection, result, error) -> Void in
             
             if error != nil {
@@ -87,6 +87,8 @@ class SignUpViewController: ViewController {
                 // SAVE FB PARAMETERS TO PARSE
                 PFUser.currentUser()?["gender"] = result["gender"]
                 PFUser.currentUser()?["name"] = result["name"]
+                PFUser.currentUser()?["email"] = result["email"]
+
                 
                 PFUser.currentUser()?.saveInBackground()
                 
