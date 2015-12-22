@@ -116,29 +116,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FEg-ED-pZb">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="uMx-72-lq2"/>
+                                    <constraint firstAttribute="height" constant="60" id="uMx-72-lq2"/>
                                 </constraints>
                                 <items>
                                     <navigationItem title="Ponder" id="bqX-Ct-5hx">
                                         <barButtonItem key="leftBarButtonItem" title="Log Out" id="iUw-y4-Q9q">
                                             <connections>
-                                                <segue destination="BYZ-38-t0r" kind="show" identifier="logout" id="aLx-Cy-IFn"/>
+                                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="logout" id="aLx-Cy-IFn"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Contacts" id="7Fk-2N-h2N">
+                                            <connections>
+                                                <segue destination="epb-U3-ku2" kind="show" id="OQY-7X-cYi"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Do-Pm-529">
-                                <rect key="frame" x="20" y="90" width="280" height="328"/>
+                                <rect key="frame" x="20" y="106" width="280" height="328"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="328" id="5Fx-jj-93R"/>
                                     <constraint firstAttribute="width" constant="280" id="r28-Q6-1cc"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ponder Away!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLe-xy-mVI">
-                                <rect key="frame" x="108" y="446" width="105" height="21"/>
+                                <rect key="frame" x="108" y="462" width="105" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="105" id="cCP-EO-Gqx"/>
                                     <constraint firstAttribute="height" constant="21" id="nyC-0w-ary"/>
@@ -169,6 +174,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7aX-cK-hFl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1114" y="304"/>
+        </scene>
+        <!--Contacts Table View Controller-->
+        <scene sceneID="BhA-6c-NcP">
+            <objects>
+                <tableViewController id="epb-U3-ku2" customClass="ContactsTableViewController" customModule="Ponder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="pXt-M5-66A">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="CxC-FO-Kmf">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Your Contacts" id="CES-AL-wL7">
+                                    <barButtonItem key="leftBarButtonItem" title="Back" id="6Vo-r5-xEq">
+                                        <connections>
+                                            <segue destination="EJ8-3H-GdE" kind="show" id="ZXm-pV-1x2"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="hvf-rc-4Ez">
+                                <rect key="frame" x="0.0" y="72" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hvf-rc-4Ez" id="oNs-1S-rbV">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="epb-U3-ku2" id="8Nt-0M-0Wz"/>
+                            <outlet property="delegate" destination="epb-U3-ku2" id="sxr-ab-Mwv"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Uc-aT-VaG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1563" y="304"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="UzA-FQ-j9g">
@@ -267,6 +314,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="shQ-OK-722"/>
+        <segue reference="ZXm-pV-1x2"/>
     </inferredMetricsTieBreakers>
 </document>

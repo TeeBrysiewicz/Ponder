@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D66E4C459D4D10183F4FDA11 /* Pods_Ponder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347CD75B729BC484A82A6170 /* Pods_Ponder.framework */; };
+		D7203F3A1C28D23A00B3AD08 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7203F391C28D23A00B3AD08 /* ContactsTableViewController.swift */; };
 		D73441C11C24B943003D3F2C /* PonderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73441C01C24B943003D3F2C /* PonderViewController.swift */; };
 		D7D2ABA11C237EBE00B70087 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2ABA01C237EBE00B70087 /* AppDelegate.swift */; };
 		D7D2ABA31C237EBE00B70087 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2ABA21C237EBE00B70087 /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 		078B37C6D1A297DA5365426F /* Pods-Ponder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ponder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ponder/Pods-Ponder.release.xcconfig"; sourceTree = "<group>"; };
 		347CD75B729BC484A82A6170 /* Pods_Ponder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ponder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8418B0E46605A9588B19FEF /* Pods-Ponder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ponder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ponder/Pods-Ponder.debug.xcconfig"; sourceTree = "<group>"; };
+		D7203F391C28D23A00B3AD08 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		D73441C01C24B943003D3F2C /* PonderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PonderViewController.swift; sourceTree = "<group>"; };
 		D7D2AB9D1C237EBE00B70087 /* Ponder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ponder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7D2ABA01C237EBE00B70087 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				D7D2ABA01C237EBE00B70087 /* AppDelegate.swift */,
 				D7D2ABA21C237EBE00B70087 /* ViewController.swift */,
 				D7D2ABA41C237EBE00B70087 /* Main.storyboard */,
+				D7203F391C28D23A00B3AD08 /* ContactsTableViewController.swift */,
 				D73441C01C24B943003D3F2C /* PonderViewController.swift */,
 				D7D386C61C287DFE0008A4F6 /* SignUpViewController.swift */,
 				D7D2ABA71C237EBE00B70087 /* Assets.xcassets */,
@@ -342,6 +345,7 @@
 			files = (
 				D7D2ABA31C237EBE00B70087 /* ViewController.swift in Sources */,
 				D7D2ABA11C237EBE00B70087 /* AppDelegate.swift in Sources */,
+				D7203F3A1C28D23A00B3AD08 /* ContactsTableViewController.swift in Sources */,
 				D7D386C71C287DFE0008A4F6 /* SignUpViewController.swift in Sources */,
 				D73441C11C24B943003D3F2C /* PonderViewController.swift in Sources */,
 			);

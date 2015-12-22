@@ -95,6 +95,16 @@ class PonderViewController: ViewController {
         // MATCH QUERY
         // ---------------------------------------------------
         var query = PFUser.query()
+        
+            // GEOBOX QUERY
+        if let latitude = PFUser.currentUser()?["location"]!.latitude {
+            if let longitude = PFUser.currentUser()?["location"]!.longitude {
+                
+                query?.whereKey("location", withinGeoBoxFromSouthwest: PFGeoPoint(latitude: latitude - 1, longitude: longitude - 1), toNortheast: PFGeoPoint(latitude: latitude + 1, longitude: longitude + 1))
+                
+            }
+        }
+        
         query?.whereKey("gender", equalTo: interestedIn)
         query?.whereKey("interestedInWomen", equalTo: isFemale)
         
@@ -146,6 +156,17 @@ class PonderViewController: ViewController {
         let gesture = UIPanGestureRecognizer(target: self, action: Selector("wasDragged:"))
         userImage.addGestureRecognizer(gesture)
         userImage.userInteractionEnabled = true
+        
+        PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+        
+            if let geoPoint = geoPoint {
+                
+                PFUser.currentUser()?["location"] = geoPoint
+                PFUser.currentUser()?.saveInBackground()
+                
+            }
+            
+        }
         
         updateImage()
     }
